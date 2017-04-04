@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace cookie.Controllers
 {
@@ -10,12 +11,15 @@ namespace cookie.Controllers
     {
         public IActionResult Index()
         {
+            ClaimsPrincipal a = new ClaimsPrincipal();
+
             return View();
         }
 
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
+            //await HttpContext.Authentication.SignInAsync("MyCookieMiddlewareInstance", principal);
 
             return View();
         }
